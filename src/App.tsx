@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Profiler } from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import SignUp from "./pages/SignUp";
+import Login from "./pages/Login";
+import UserProfile from "./pages/UserProfile";
+import AllUsers from "./pages/AllUsers";
+import { AuthProvider } from "./context/Context";
 
-function App() {
+const App: React.FC = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <AuthProvider>
+        <Switch>
+          <Route exact path="/">
+            <SignUp />
+          </Route>
+
+          <Route path="/login">
+            <Login />
+          </Route>
+          <Route path="/profile">
+            <UserProfile />
+          </Route>
+          <Route path="/users">
+            <AllUsers />
+          </Route>
+        </Switch>
+      </AuthProvider>
+    </Router>
   );
-}
+};
 
 export default App;
