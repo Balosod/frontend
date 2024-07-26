@@ -52,7 +52,7 @@ const Login = () => {
         history.push("/profile");
       }
     } catch (error) {
-      setError("Please try again something went wrong");
+      setError("Please try again something went wrong.");
     }
   };
 
